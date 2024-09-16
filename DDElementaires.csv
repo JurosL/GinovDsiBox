@@ -1,0 +1,16 @@
+Entity;Attribute;Type;Size;Front;Constraint;Descripiton;
+;;;;;;;
+User;;;;;;;
+;id;integer;;id;PRIMARY KEY;;
+;name;string;255;name;;;
+;firstname;string;255;firstname;;;
+;password;string;255;password;;;
+;email;string;255;email;NOT NULL UNIQUE;it's our user identifier;
+;createAt;DateTime;;create_at;;;
+;updateAt;DateTime;;update_at;;;
+;roles;array;;roles;"DEFAULT ""ROLE_USER""";;
+;apiToken;string;255;api_token;;;
+;;;;;;;
+;;;;;;;
+"TypeStructureOrganisationnelle	";;;;;;;
+;id;integer;;id;PRIMARY KEY;;
