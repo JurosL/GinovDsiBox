@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+    web:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: php82-apache
+        ports:
+            - 8000:80
+        environment:
+            - APP_ENV=dev
+        volumes:
+            - ./:/var/www/calDAV
+
+    db:
+        image: mysql:8.0
+        container_name: mysql80
+        restart: always
+        ports:
+            - 3307:3306
+        environment:
+            MYSQL_ROOT_PASSWORD: rootpass
+            MYSQL_DATABASE: db_baikal
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: adminpass
+        volumes:
+            - db-data:/var/lib/mysql
+
+
+volumes:
+    db-data:
