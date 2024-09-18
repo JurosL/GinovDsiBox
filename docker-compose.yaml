@@ -21,7 +21,7 @@ services:
             - 3307:3306
         environment:
             MYSQL_ROOT_PASSWORD: rootpass
-            MYSQL_DATABASE: db_baikal
+            MYSQL_DATABASE: db_dsibox
             MYSQL_USER: admin
             MYSQL_PASSWORD: adminpass
         volumes:

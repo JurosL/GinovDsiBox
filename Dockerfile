@@ -2,7 +2,7 @@
 FROM php:8.2-apache
 
 # Définit le répertoire de travail par défaut à /var/www/html
-WORKDIR /var/www/calDAV
+WORKDIR /var/www/dsiBox
 
 # Met à jour les paquets et installe les dépendances nécessaires sans les recommandations supplémentaires
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -42,30 +42,30 @@ RUN docker-php-ext-configure intl \
 RUN pecl install apcu && docker-php-ext-enable apcu
 
 # Copie les fichiers du projet dans le conteneur
-# COPY . ./calDAV
+# COPY . ./dsiBox
 COPY . .
 
 # Run Composer install, ignoring the missing extension requirement temporarily
 RUN composer install --no-dev --no-interaction --no-scripts
 
 # Configure les informations utilisateur pour Git
-RUN git config --global user.email "you@example.com" \
-    && git config --global user.name "Your Name"
+RUN git config --global user.email "kb1congo@gmail.com" \
+    && git config --global user.name "kb1congo"
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
 # Crée une configuration Apache pour pointer vers le dossier public
 RUN echo "<VirtualHost *:80>\n\
-    DocumentRoot /var/www/calDAV/public\n\
-    <Directory /var/www/calDAV/public>\n\
+    DocumentRoot /var/www/dsiBox/public\n\
+    <Directory /var/www/dsiBox/public>\n\
         AllowOverride All\n\
         Require all granted\n\
     </Directory>\n\
 </VirtualHost>" > /etc/apache2/sites-available/000-default.conf
 
 # Set the appropriate permissions and user
-RUN chown -R www-data:www-data /var/www/calDAV
+RUN chown -R www-data:www-data /var/www/dsiBox
 
 # Change to www-data user
 USER www-data

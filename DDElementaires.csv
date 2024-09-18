@@ -2,7 +2,7 @@ Entity;Attribute;Type;Size;Front;Constraint;Descripiton;
 ;;;;;;;
 User;;;;;;;
 ;id;integer;;id;PRIMARY KEY;;
-;name;string;255;name;;;
+;lastname;string;255;lastname;;;
 ;firstname;string;255;firstname;;;
 ;password;string;255;password;;;
 ;email;string;255;email;NOT NULL UNIQUE;it's our user identifier;
